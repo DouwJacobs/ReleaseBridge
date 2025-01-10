@@ -5,10 +5,10 @@ FROM node:16-alpine
 WORKDIR /usr/src/app
 
 # Copy package files
-COPY package.json package-lock.json ./
+COPY package.json yarn.lock ./
 
 # Install dependencies
-RUN npm install
+RUN yarn install --frozen-lockfile --network-timeout 1000000
 
 # Copy application files
 COPY src/ ./src
